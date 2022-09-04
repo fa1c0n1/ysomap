@@ -15,7 +15,7 @@ public class DetailHelper {
     public final static String BODY =
             "根据effect类型填充body内容，分别如下：<br>" +
             "1. default, body=command<br>" +
-            "2. TomcatEcho, body不填<br>" +
+            "2. TomcatEcho/TomcatEchoMin, body不填<br>" +
             "3. SocketEcho, body=host;port<br>" +
             "4. RemoteFileLoader 或 RemoteFileHttpLoader, body=url;classname<br>" +
             "5. RemoteFileHttpExecutor, body=url;os<br>" +

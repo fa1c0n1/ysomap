@@ -7,6 +7,7 @@ import ysomap.core.serializer.hessian.Hessian2Serializer;
 import ysomap.core.serializer.hessian.HessianSerializer;
 import ysomap.core.serializer.json.FastJsonSerializer;
 import ysomap.core.serializer.json.JacksonJsonSerializer;
+import ysomap.core.serializer.shiro.ShiroSerializer;
 import ysomap.core.serializer.xml.XMLDecoderSerializer;
 import ysomap.core.serializer.xml.XStreamSerializer;
 import ysomap.payloads.Payload;
@@ -42,6 +43,8 @@ public class SerializerFactory {
                 return new Kryo2Serializer();
             case "kryo_alt_strategy ":
                 return new KryoSerializer();
+            case "shiro":
+                return new ShiroSerializer();
             default:
                 return new DefaultSerializer();
         }

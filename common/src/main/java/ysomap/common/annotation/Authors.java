@@ -29,6 +29,8 @@ public @interface Authors {
     String KINGX = "kingx";
     String JANG = "Jang";
 
+    String M01E = "m01e";
+
     String[] value() default {};
 
     class Utils {
